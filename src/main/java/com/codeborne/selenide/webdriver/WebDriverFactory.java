@@ -185,10 +185,7 @@ public class WebDriverFactory {
   }
 
   protected WebDriver createFirefoxDriver(Proxy proxy) {
-    DesiredCapabilities capabilities = createFirefoxCapabilities(proxy);
-    log.info("Firefox 48+ is currently not supported by Selenium Firefox driver. " +
-            "Use browser=marionette with geckodriver, when using it.");
-    return new FirefoxDriver(capabilities);
+    return new FirefoxDriver(createFirefoxCapabilities(proxy));
   }
 
   protected DesiredCapabilities createFirefoxCapabilities(Proxy proxy) {
@@ -203,7 +200,6 @@ public class WebDriverFactory {
     DesiredCapabilities capabilities = createCommonCapabilities(proxy);
     myProfile = transferFirefoxProfileFromSystemProperties(myProfile, "firefoxprofile.");
     capabilities.setCapability(FirefoxDriver.PROFILE, myProfile);
-    capabilities.setCapability("marionette", false);
     return capabilities;
   }
 

@@ -331,7 +331,7 @@ tasks.withType(Test).all { testTask ->
   testTask.outputs.upToDateWhen { false }
 }
 
-task allTests(dependsOn: ['clean', 'test', 'chrome', 'htmlunit', 'phantomjs']) {}
+task allTests(dependsOn: ['clean', 'test', 'firefox', 'chrome', 'htmlunit', 'phantomjs']) {}
 
 jar {
   manifest {
