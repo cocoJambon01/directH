@@ -10,6 +10,7 @@ import org.junit.rules.TestRule;
 import java.util.Locale;
 import java.util.logging.Logger;
 
+import static com.codeborne.selenide.Configuration.FileDownloadMode.HTTPGET;
 import static com.codeborne.selenide.Configuration.FileDownloadMode.PROXY;
 import static com.codeborne.selenide.Configuration.*;
 import static com.codeborne.selenide.Selenide.open;
@@ -72,7 +73,7 @@ public abstract class IntegrationTest {
     fastSetValue = false;
     browserSize = "1024x768";
     server.uploadedFiles.clear();
-    Configuration.fileDownload = PROXY;
+    Configuration.fileDownload = isFirefox() ? HTTPGET : PROXY;
   }
 
   @AfterClass
