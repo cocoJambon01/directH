@@ -793,7 +793,7 @@ public class Selenide {
     try {
       return getWebDriver().manage().logs().get(logType).filter(logLevel);
     }
-    catch (UnsupportedOperationException ignore) {
+    catch (UnsupportedOperationException | UnsupportedCommandException ignore) {
       return emptyList();
     }
   }
