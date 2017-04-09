@@ -3,6 +3,7 @@
 === 4.4.3 (released 10.04.2017)
 * fix creating FireFox driver (now it seems to work with Firefox 52)
 * add missing dependency selenium-support:3.3.1 (it was deleted from selenium-java:3.3.1 for unknown reason)
+* upgrade to phantomjs 1.4.2 (which is built with selenium:3.3.1)
 
 === 4.4.2 (released 30.03.2017)
 * #510 fix closing windows in `$.download()`

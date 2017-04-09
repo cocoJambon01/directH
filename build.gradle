@@ -53,7 +53,7 @@ dependencies {
     exclude group: 'com.codeborne', module: 'phantomjsdriver'
   }
   runtime ('org.seleniumhq.selenium:selenium-support:3.3.1')
-  runtime group: 'com.codeborne', name: 'phantomjsdriver', version: '1.4.1', transitive: false
+  runtime group: 'com.codeborne', name: 'phantomjsdriver', version: '1.4.2', transitive: false
   compile 'com.google.code.gson:gson:2.8.0'
   compile 'com.google.guava:guava:21.0'
   runtime 'commons-codec:commons-codec:1.10'
