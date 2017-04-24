@@ -16,6 +16,19 @@ header-text:
 <div class="wrapper-content">
   <section>
     
+    <a href="https://www.omniva.ee/" target="_blank">
+      <img src="{{ BASE_PATH }}/images/omniva-logo.png" style="width: 100px;" alt="Omniva"/>
+    </a>
+    <br/>
+    
+    <div class="text-right">
+      <a href="https://www.omniva.ee/" target="_blank">Omniva</a> 
+      is an international logistics company that transports goods and information.
+      Omniva is the leader of e-commerce and plays an important role in advancing the economic life of Baltic States.
+    </div>
+    
+    <hr class="divider"/>
+    
     <a href="http://pragmaticcoders.com/" target="_blank">
       <img src="{{ BASE_PATH }}/images/pragmatic-coders.png" style="width: 150px;" alt="Pragmatic Coders"/>
     </a>
