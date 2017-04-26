@@ -121,5 +121,5 @@ Shortly said, it means that you can do anything with it.
 
 No. For sure. Selenide will always be free. 
 
-* Firstly, because we believe at Open Source. 
+* Firstly, because we believe in Open Source. 
 * Secondly, because we don't believe we can earn lot of money this way. :)
