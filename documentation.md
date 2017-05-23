@@ -259,7 +259,7 @@ Assertions
 Assertions also play role of explicit waits. They **wait** for condition (e.g. `size(2)`, `empty`, `texts("a", "b", "c"))` to be satisfied until timeout reached (the value of `Configuration.collectionsTimeout` that is set to 6000 ms by default).
 
 <h4>
-Methods to get statues and attributes of elements collection
+Methods to get statuses and attributes of elements collection
 </h4>
 
 *   size()
