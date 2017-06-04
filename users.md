@@ -15,6 +15,19 @@ header-text:
 
 <div class="wrapper-content">
   <section>
+
+    <a href="https://alfabank.ru/" target="_blank">
+      <img src="{{ BASE_PATH }}/images/alfa-bank-logo.png" style="width: 200px;" alt="Alfa bank"/>
+    </a>
+    <br/>
+    
+    <div class="text-right">
+      <a href="https://alfabank.ru/" target="_blank">Alfa bank</a> -
+      one of the biggest commercial banks in Russia
+    </div>
+    
+    <hr class="divider"/>
+
     <a href="https://www.pipedrive.com/" target="_blank">
       <img src="{{ BASE_PATH }}/images/pipedrive-logo.svg" style="width: 200px;" alt="Pipedrive"/>
     </a>
