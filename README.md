@@ -21,7 +21,8 @@ git push origin --tags
 selenide> gradle clean javadoc
 selenide> mkdir ../selenide-web/javadoc/4.4/
 selenide> cp -r build/docs/javadoc/* ../selenide-web/javadoc/4.4/
-selenide> mv build/docs/javadoc/* ../selenide-web/javadoc/current/
+selenide> rm -fr ../selenide-web/javadoc/current/*
+selenide> cp -r build/docs/javadoc/* ../selenide-web/javadoc/current/
 selenide-web> git add javadoc/4.4
 selenide-web> git add javadoc/current
 
