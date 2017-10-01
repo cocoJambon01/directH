@@ -35,9 +35,4 @@ public class CustomCommandsTest extends IntegrationTest {
   public void openTestPage() {
     openFile("page_with_images.html");
   }
-
-  @After
-  public void resetSelenideDefaultCommands() {
-    Commands.getInstance().resetDefaults();
-  }
 }

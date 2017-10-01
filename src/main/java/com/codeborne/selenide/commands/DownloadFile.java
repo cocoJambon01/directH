@@ -8,6 +8,7 @@ import com.codeborne.selenide.impl.DownloadFileWithProxyServer;
 import com.codeborne.selenide.impl.WebElementSource;
 import org.openqa.selenium.WebElement;
 
+import javax.inject.Inject;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -18,8 +19,8 @@ import static com.codeborne.selenide.WebDriverRunner.webdriverContainer;
 public class DownloadFile implements Command<File> {
   private static final Logger LOG = Logger.getLogger(DownloadFile.class.getName());
   
-  DownloadFileWithHttpRequest downloadFileWithHttpRequest = new DownloadFileWithHttpRequest();
-  DownloadFileWithProxyServer downloadFileWithProxyServer = new DownloadFileWithProxyServer();
+  @Inject public DownloadFileWithHttpRequest downloadFileWithHttpRequest;
+  @Inject DownloadFileWithProxyServer downloadFileWithProxyServer;
   
   @Override
   public File execute(SelenideElement proxy, WebElementSource linkWithHref, Object[] args) throws IOException {

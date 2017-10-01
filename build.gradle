@@ -40,6 +40,8 @@ configurations {
 }
 
 dependencies {
+  compile group: 'com.google.dagger', name: 'dagger', version: '2.11'
+  compile group: 'com.google.dagger', name: 'dagger-compiler', version: '2.11'
   compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '1.7.2'
   compile('org.apache.httpcomponents:httpcore:4.4.6')
   compile('org.seleniumhq.selenium:selenium-java:3.5.3') {
