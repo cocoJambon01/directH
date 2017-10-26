@@ -7,6 +7,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.List;
 
+/**
+ * @deprecated
+ * Instead of using static method of this class, inject and use ScreenShotLaboratory dependency
+ */
+@Deprecated
 public class Screenshots {
   public static ScreenShotLaboratory screenshots = new ScreenShotLaboratory();
 

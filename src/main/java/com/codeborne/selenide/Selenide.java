@@ -3,6 +3,7 @@ package com.codeborne.selenide;
 import com.codeborne.selenide.ex.DialogTextMismatch;
 import com.codeborne.selenide.ex.JavaScriptErrorsFound;
 import com.codeborne.selenide.impl.*;
+import com.codeborne.selenide.inject.Module;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.logging.LogEntry;
@@ -34,8 +35,12 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 public class Selenide {
   private static final Logger log = Logger.getLogger(Selenide.class.getName());
 
-  public static Navigator navigator = new Navigator();
+  private static final ThreadLocal<SelenideDriver> defaultDrivers = ThreadLocal.withInitial(() ->
+      new Module().instance(SelenideDriver.class));
 
+  private static SelenideDriver defaultDriver() {
+    return defaultDrivers.get();
+  }
 
   /**
    * The main starting point in your tests.
@@ -50,14 +55,14 @@ public class Selenide {
    *   In this case, it's prepended by baseUrl
    */
   public static void open(String relativeOrAbsoluteUrl) {
-    open(relativeOrAbsoluteUrl, "", "", "");
+    defaultDriver().open(relativeOrAbsoluteUrl);
   }
 
   /**
    * @see Selenide#open(String)
    */
   public static void open(URL absoluteUrl) {
-    open(absoluteUrl, "", "", "");
+    defaultDriver().open(absoluteUrl);
   }
 
   /**
@@ -76,16 +81,14 @@ public class Selenide {
    *   In this case, it's prepended by baseUrl
    */
   public static void open(String relativeOrAbsoluteUrl, String domain, String login, String password) {
-    navigator.open(relativeOrAbsoluteUrl, domain, login, password);
-    mockModalDialogs();
+    defaultDriver().open(relativeOrAbsoluteUrl, domain, login, password);
   }
 
   /**
    * @see Selenide#open(URL, String, String, String)
    */
   public static void open(URL absoluteUrl, String domain, String login, String password) {
-    navigator.open(absoluteUrl, domain, login, password);
-    mockModalDialogs();
+    defaultDriver().open(absoluteUrl, domain, login, password);
   }
 
   /**
@@ -95,29 +98,15 @@ public class Selenide {
    * @param hash value for window.location.hash - Accept either "#hash" or "hash".
    */
   public static void updateHash(String hash) {
-    String localHash = (hash.charAt(0) == '#') ? hash.substring(1) : hash;
-    executeJavaScript("window.location.hash='" + localHash + "'");
+    defaultDriver().updateHash(hash);
   }
+
+  // ********************************************
+  // TODO Migrate methods below to SelenideDriver
+  // ********************************************
 
   private static boolean doDismissModalDialogs() {
     return !supportsModalDialogs() || dismissModalDialogs;
-  }
-
-  private static void mockModalDialogs() {
-    if (doDismissModalDialogs()) {
-      String jsCode =
-          "  window._selenide_modalDialogReturnValue = true;\n" +
-          "  window.alert = function(message) {};\n" +
-          "  window.confirm = function(message) {\n" +
-          "    return window._selenide_modalDialogReturnValue;\n" +
-          "  };";
-      try {
-        executeJavaScript(jsCode);
-      }
-      catch (UnsupportedOperationException cannotExecuteJsAgainstPlainTextPage) {
-        log.warning(cannotExecuteJsAgainstPlainTextPage.toString());
-      }
-    }
   }
 
   /**
@@ -170,21 +159,21 @@ public class Selenide {
    * Reload current page
    */
   public static void refresh() {
-    navigator.open(url());
+    defaultDriver().open(url());
   }
 
   /**
    * Navigate browser back to previous page
    */
   public static void back() {
-    navigator.back();
+    defaultDriver().back();
   }
 
   /**
    * Navigate browser forward to next page
    */
   public static void forward() {
-    navigator.forward();
+    defaultDriver().forward();
   }
 
   /**
@@ -214,7 +203,7 @@ public class Selenide {
    * @return The name of resulting file
    */
   public static String screenshot(String fileName) {
-    return Screenshots.takeScreenShot(fileName);
+    return defaultDriver().screenshot(fileName);
   }
 
   /**
