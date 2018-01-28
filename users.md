@@ -16,6 +16,19 @@ header-text:
 <div class="wrapper-content">
   <section>
 
+    <a href="https://www.ubs.com/global/en.html" target="_blank">
+      <img src="{{ BASE_PATH }}/images/ubs-logo.png" style="width: 200px;" alt="UBS AG"/>
+    </a>
+    <br/>
+    
+    <div class="text-right">
+      <a href="https://www.ubs.com/global/en.html" target="_blank">UBS AG</a> 
+      is a Swiss global financial services company, providing wealth management, asset management, and investment banking 
+      services worldwide.
+    </div>
+    
+    <hr class="divider"/>
+    
     <a href="https://alfabank.ru/" target="_blank">
       <img src="{{ BASE_PATH }}/images/alfa-bank-logo.png" style="width: 200px;" alt="Alfa bank"/>
     </a>
